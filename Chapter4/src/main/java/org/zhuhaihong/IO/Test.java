@@ -4,30 +4,63 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * IO流相关操作
+ * <h1>IO流相关操作</h1>
  *
- * @date:2022/7/19 <p>常用的流可分为:字节流(输入输出)、字符流(输入输出)</p>
- * <p>文本文件主要时字符为单位的,所以一般使用字符流(Reader/Writer)</p>
- * <p>基本接口:InputStream-OutputStream、Reader-Writer</p>
- *
- * <p>文件流实现类:FileInputStream-FileOutputStream、FileReader-FileWriter</p>
- *
- * <p>缓冲流:
- * 字节流-BufferedInputStream/BufferedOutputStream
- * 字符流-BufferedReader/BufferedWriter
- * 作用-减少与磁盘的交互次数实现高效读写数据操作</p>
+ * @date:2022/7/19
+ * @author dearfriend
  *
  *
- * <p>转换流
- * InputStreamReader-解码
- * OutputStreamWriter-编码
- * 掌握字符编码解码过程
- * <p>
- * >转换流实际就是利用字节流为基础,对字节流<->字符流进行编码/解码
- * >文件字符流其实也可以进行编/解码方式的指定
- * >相当于以字节流为节点流(基础数据流),对字节流进行处理
+ * <h2>分类</h2>
+ * <ul>
+ *     <li>常用的流可分为:字节流(输入输出)、字符流(输入输出)</li>
+ *     <li>文本文件主要时字符为单位的,所以一般使用字符流(Reader/Writer)</li>
+ *     <li>基本接口:InputStream-OutputStream、Reader-Writer</li>
+ * </ul>
  *
- * </p>
+ * <h2>文件流实现类</h2>
+ * <li>FileInputStream-FileOutputStream、FileReader-FileWriter</li>
+ *
+ * <h2>缓冲流</h2>
+ * <ul>
+ *     <li>字节流-BufferedInputStream/BufferedOutputStream</li>
+ *     <li>字符流-BufferedReader/BufferedWriter</li>
+ *     <li>作用-减少与磁盘的交互次数实现高效读写数据操作</li>
+ * </ul>
+ *
+ * <h2>转换流</h2>
+ * <ul>
+ *     <li>InputStreamReader-解码</li>
+ *     <li>OutputStreamWriter-编码</li>
+ *     <li>掌握字符编码解码过程</li>
+ * </ul>
+ *
+ * >转换流实际就是利用字节流为基础,对字节流<->字符流进行编码/解码<p>
+ * >文件字符流其实也可以进行编/解码方式的指定<p>
+ * >相当于以字节流为节点流(基础数据流),对字节流进行处理<p>
+ *
+ *
+ * <h2>对象流</h2>
+ * <ul>
+ *     <li>序列化:ObjectInputStream</li>
+ *     <li>反序列化:ObjectOutputStream</li>
+ *     <li>应用场景:不同进程之间通信、客户端(浏览器)与服务器之间的传输数据</li>
+ * </ul>
+ *
+ * <strong>操作:</strong>
+ * <ol>
+ *     <li>对象类实现Serializable,表示对象可序列化</li>
+ *     <li>指定SerializeVersionUID表示:如果没有serialVersionUID,一旦改变类的任意东西,原始生成的序列化内容无法被反序列化</li>
+ *     <li>成员变量也都是需要保证是可序列化的</li>
+
+ * </ol>
+ *
+ *
+ * <h2>标准输入/出流</h2>
+ * <ul>
+ *     <li>System.in标准输入流:默认从键盘输入</li>
+ *     <li>System.out标准输入流:默认从控制台</li>
+ * </ul>
+ * <strong>注:可以通过setIn/Out修改输入/出流的文职</strong>
  */
 public class Test {
     final static String FIL_PATH = "fileResource/";
@@ -50,7 +83,7 @@ public class Test {
      */
     @org.junit.Test
     public void testReader() {
-        String s = FileCharStream.fileReaderByCharStream("fileResource/io.txt");
+        String s = demo1FileCharStream.fileReaderByCharStream("fileResource/io.txt");
         System.out.println(s);
     }
 
@@ -61,7 +94,7 @@ public class Test {
      */
     @org.junit.Test
     public void testFileWriter() {
-        FileCharStream.fileWriterByCharStream("testFileWriteByCharStream", "fileResource/fileWriterCharStream.txt");
+        demo1FileCharStream.fileWriterByCharStream("testFileWriteByCharStream", "fileResource/fileWriterCharStream.txt");
     }
 
 
@@ -71,7 +104,7 @@ public class Test {
      */
     @org.junit.Test
     public void testFileCopy() {
-        FileCharStream.fileCopyByCharStream("fileResource/io.txt", "fileResource/io_copy.txt");
+        demo1FileCharStream.fileCopyByCharStream("fileResource/io.txt", "fileResource/io_copy.txt");
     }
 
 
@@ -82,7 +115,7 @@ public class Test {
      */
     @org.junit.Test
     public void testFileInputStream() {
-        byte[] bytes = FileByteStream.fileInputStreamRead("fileResource/pic.png");
+        byte[] bytes = demo2FileByteStream.fileInputStreamRead("fileResource/pic.png");
         System.out.println(Arrays.toString(bytes));
     }
 
@@ -96,7 +129,7 @@ public class Test {
      */
     @org.junit.Test
     public void testCopyFileByByteStream() {
-        FileByteStream.copyFileByByteStream(FIL_PATH + "pic.png", FIL_PATH + "pic_copy.png");
+        demo2FileByteStream.copyFileByByteStream(FIL_PATH + "pic.png", FIL_PATH + "pic_copy.png");
     }
 
 
@@ -108,7 +141,7 @@ public class Test {
     @org.junit.Test
     public void testreadFIleByBugger() throws IOException {
         System.out.println(
-                BufferedIO.readFileByBuffer(FIL_PATH + "io.txt")
+                demo3BufferedIO.readFileByBuffer(FIL_PATH + "io.txt")
         );
     }
 
@@ -118,7 +151,7 @@ public class Test {
      */
     @org.junit.Test
     public void testCopyFileByBuffered() throws IOException {
-        BufferedIO.copyFileByBuffer(FIL_PATH + "dzd.mkv", FIL_PATH + "dzd_copy.mkv");
+        demo3BufferedIO.copyFileByBuffer(FIL_PATH + "dzd.mkv", FIL_PATH + "dzd_copy.mkv");
     }
 
     /**
@@ -127,10 +160,10 @@ public class Test {
      */
     @org.junit.Test
     public void testCompare() throws IOException {
-        BufferedIO.copyFileByBuffer(FIL_PATH + "dzd.mkv", FIL_PATH + "dzd_copy1.mkv");
+        demo3BufferedIO.copyFileByBuffer(FIL_PATH + "dzd.mkv", FIL_PATH + "dzd_copy1.mkv");
 
         long l = System.currentTimeMillis();
-        FileByteStream.copyFileByByteStream(FIL_PATH + "dzd.mkv", FIL_PATH + "dzd_copy2.mkv");
+        demo2FileByteStream.copyFileByByteStream(FIL_PATH + "dzd.mkv", FIL_PATH + "dzd_copy2.mkv");
         long l1 = System.currentTimeMillis();
 
         double comsumeTime = (l1 - l) / 1000.0;
@@ -144,14 +177,14 @@ public class Test {
      */
     @org.junit.Test
     public void testReadFileByTransformStreamUTF8() throws IOException {
-        String s = TransformStream.readFileByTransformReader(FIL_PATH + "encoding.txt", UTF_8);
+        String s = demo4TransformStream.readFileByTransformReader(FIL_PATH + "encoding.txt", UTF_8);
         System.out.println(s);
     }
 
 
     @org.junit.Test
     public void testReadFileByTransformStreamGBK() throws IOException {
-        String s = TransformStream.readFileByTransformReader(FIL_PATH + "encoding.txt", GBK);
+        String s = demo4TransformStream.readFileByTransformReader(FIL_PATH + "encoding.txt", GBK);
         System.out.println(s);
     }
 //    Buffered璇诲啓鏇村揩鐨勫師鍥犱富瑕佸湪浜庡噺灏戜簡鐩存帴鐨処O鎿嶄綔娆℃暟銆傗��
@@ -166,9 +199,43 @@ public class Test {
      */
     @org.junit.Test
     public void testFileTransformCode() throws Exception {
-        TransformStream.transFormCode(FIL_PATH + "encoding.txt", UTF_8,
+        demo4TransformStream.transFormCode(FIL_PATH + "encoding.txt", UTF_8,
                 FIL_PATH + "GBK.txt", GBK);
     }
+
+
+    /**========================================对象流========================================*/
+    /**
+     * 序列化过程*/
+    @org.junit.Test
+    public void  testObjectWrite() throws IOException {
+        Person person = new Person();
+        person.setName("Helen");
+        person.setAge(34);
+        person.setDescription("object stream test-program");
+
+        person.writeObjectOutputStream(FIL_PATH+"object.json");
+    }
+
+
+    /**反序列化过程
+     * 从文件中读取对象,返回该对象
+    * */
+    @org.junit.Test
+    public void  testObjectRead() throws IOException, ClassNotFoundException {
+        Person person = Person.readObjectInputStream(FIL_PATH + "object.json");
+
+        System.out.println(person);
+
+    }
+
+    /**========================================输入输出流========================================*/
+    @org.junit.Test
+    public void  testPrint() throws IOException {
+        demo6others.Log(FIL_PATH+"log.txt");
+
+    }
+
 
 
 }

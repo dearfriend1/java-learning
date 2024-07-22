@@ -21,7 +21,7 @@ import java.io.IOException;
  * <p>
  * todo:try-catch-finally作用域;并列try-catch执行情况(不管有没有错都会执行?)
  */
-public class FileCharStream {
+public class demo1FileCharStream {
 
     /**
      * 读取文本文件中的文本内容

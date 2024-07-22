@@ -1,10 +1,7 @@
 package org.zhuhaihong.IO;
 
 
-import javax.naming.OperationNotSupportedException;
 import java.io.*;
-import java.lang.reflect.Field;
-import java.util.Arrays;
 
 /**
  * 缓冲流
@@ -12,7 +9,7 @@ import java.util.Arrays;
  *
  * private static final int DEFAULT_BUFFER_SIZE = 8192;
  * */
-public class BufferedIO {
+public class demo3BufferedIO {
 
     /**
      * 字符缓冲流读取*/

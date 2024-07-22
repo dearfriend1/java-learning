@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Calendar;
 
 /**
  *
@@ -26,7 +25,7 @@ import java.util.Calendar;
  * 4.关闭资源
  */
 
-public class FileByteStream {
+public class demo2FileByteStream {
 
     /**
      * 以字节的形式读取文件(测试版,没有循环读取)

@@ -2,7 +2,6 @@ package org.zhuhaihong.IO;
 
 
 import java.io.*;
-import java.util.MissingResourceException;
 
 /**
  * 转换流
@@ -43,7 +42,7 @@ import java.util.MissingResourceException;
  *   </tbody>
  *   </table></blockquote>
  * */
-public class TransformStream {
+public class demo4TransformStream {
 
     /**指定编码方式读取文件
      * */
