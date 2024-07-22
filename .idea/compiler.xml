@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springdemo1" />
         <module name="Chapter4" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chapter3" target="21" />
+      <module name="springdemo1" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
