@@ -1,0 +1,44 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+/chapter3/chapter3.iml
+/Chapter4/target/
+/BeanUtils.copyProperties.md
+/chapter3.iml
+/ERDF controller层.md
+/ERDF优点.md
+/ERDF慧都快速搭建框架.md
+/Git学习.md
+/JavaLearn.iml
+/java开发规范.md
+/JDBC.md
+/Minio源码学习.md
+/相关软件安装.md
+/Chapter4/src/test/
+/chapter2/chapter2.iml

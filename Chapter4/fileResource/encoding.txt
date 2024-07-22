@@ -1,0 +1,5 @@
+Buffered读写更快的原因主要在于减少了直接的IO操作次数。‌
+首先，‌无论是Linux系统的Page Cache机制还是Java中的BufferedReader和BufferedWriter，‌它们都利用了缓存的原理来减少磁盘IO的访问次数，‌从而提高读写速度。‌具体来说：‌
+Linux系统的Page Cache机制：‌由于磁盘IO速度远低于内存速度，‌Linux系统通过实现Page Cache机制，‌即利用内存来缓存磁盘数据，‌当内存充裕时，‌尽可能利用内存来减少磁盘IO的访问次数，‌以此来提升系统的整体性能。‌当内核发起一个读请求时，‌首先检查数据是否存在于Page Cache中，‌如果缓存命中，‌则直接返回数据，‌无需访问磁盘；‌如果是写请求，‌则是先将数据写入Page Cache，‌然后周期性地或根据需要将其写回到磁盘。‌
+Java中的BufferedReader和BufferedWriter：‌它们通过在内存中设置一个缓冲区，‌先从IO设备读取数据到缓冲区，‌然后从缓冲区中读取或写入数据，‌这样就只需要访问一次IO设备就可以完成数据的读写操作，‌极大地提高了读写效率。‌BufferedReader和BufferedWriter的缓冲区大小通常为8KB，‌相比Scanner等直接读写类，‌它们能够减少更多的IO操作次数，‌从而提高读写速度。‌
+综上所述，‌无论是操作系统层面的Page Cache机制还是应用层面的BufferedReader和BufferedWriter，‌它们都通过减少直接的IO操作次数来提高读写速度。‌这是因为直接的IO操作通常需要较长时间，‌而通过缓存机制可以有效地减少这种直接操作，‌从而提高效率
